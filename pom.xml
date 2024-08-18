@@ -11,7 +11,7 @@
     <parent>
         <groupId>org.springframework.boot</groupId>
         <artifactId>spring-boot-starter-parent</artifactId>
-        <version>3.1.2</version> <!-- Spring Boot 3.X requires Java 17 -->
+        <version>3.3.2</version> <!-- Spring Boot 3.X requires Java 17 -->
         <relativePath/>
     </parent>
 
