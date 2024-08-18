@@ -1,0 +1,46 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<settings xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+          xmlns="http://maven.apache.org/SETTINGS/1.2.0"
+          xsi:schemaLocation="http://maven.apache.org/SETTINGS/1.2.0 https://maven.apache.org/xsd/settings-1.2.0.xsd">
+
+    <servers>
+        <server>
+            <id>aws-artifact-repository</id>
+            <username>pipeline</username>
+            <password>${CODE_ARTIFACT_AUTH_TOKEN}</password>
+        </server>
+    </servers>
+
+    <profiles>
+        <profile>
+            <id>aws-artifact-repository</id>
+
+            <activation>
+                <activeByDefault>true</activeByDefault>
+            </activation>
+
+            <repositories>
+                <!-- first, Maven Central -->
+                <repository>
+                    <id>central</id>
+                    <name>Central Repository</name>
+                    <url>https://repo.maven.apache.org/maven2</url>
+                    <snapshots>
+                        <enabled>false</enabled>
+                    </snapshots>
+                </repository>
+
+                <!-- then, AWS repository -->
+                <repository>
+                    <id>aws-artifact-repository</id>
+                    <url>
+                        https://ricardo-petronilho-853022906243.d.codeartifact.eu-west-2.amazonaws.com/maven/artifact-repository/
+                    </url>
+                </repository>
+            </repositories>
+
+        </profile>
+    </profiles>
+
+</settings>

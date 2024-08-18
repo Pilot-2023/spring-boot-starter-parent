@@ -1,0 +1,52 @@
+version: 0.2
+
+env:
+  variables:
+    REGION: "eu-west-2" # London
+    DOMAIN: "ricardo-petronilho"
+
+phases:
+  install:
+    on-failure: ABORT
+    runtime-versions:
+      java: corretto17 # Use Corretto 17 for Java 17
+    commands:
+      # Update Ubuntu
+      - apt-get update -y
+
+      # Install Maven to compile Spring Boot App
+      - apt-get install -y maven
+
+  pre_build:
+    on-failure: ABORT
+    commands:
+      # Login to Code Artifact
+      - export CODEBUILD_ACCOUNT_ID=`aws sts get-caller-identity --query 'Account' --output text`
+      - export CODE_ARTIFACT_AUTH_TOKEN=`aws codeartifact get-authorization-token --domain $DOMAIN --domain-owner $CODEBUILD_ACCOUNT_ID --region $REGION --query authorizationToken --output text`
+
+      # Setup Maven settings to be able to pull and push .JAR file to Code Artifact
+      - cat cicd/maven/settings.xml > ~/.m2/settings.xml
+
+      # Run custom script to retrieve Git info as Environment variables
+      - chmod +x cicd/code-build-envs.sh
+      - . ./cicd/code-build-envs.sh
+
+  build:
+    on-failure: ABORT
+    commands:
+      - echo Build started on `date`
+
+      # Build app according to Environment (DEV, SAT, PRE and PROD)
+      - chmod +x cicd/build.sh
+      - bash cicd/build.sh
+
+  post_build:
+    commands:
+      - echo Build completed on `date`
+
+      # Push JAR file to CodeArtifact
+      - mvn deploy
+
+cache:
+  paths:
+    - /root/.m2/**/*

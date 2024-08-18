@@ -127,26 +127,26 @@
         <java.version>17</java.version>
         <maven.compiler.source>${java.version}</maven.compiler.source>
         <maven.compiler.target>${java.version}</maven.compiler.target>
-        <maven-compiler-plugin.version>3.11.0</maven-compiler-plugin.version>
+        <maven-compiler-plugin.version>3.13.0</maven-compiler-plugin.version>
 
         <!-- Spring Boot -->
-        <spring-boot-starter-parent.version>3.1.2</spring-boot-starter-parent.version>
+        <spring-boot-starter-parent.version>3.3.2</spring-boot-starter-parent.version>
 
         <!-- Swagger -->
-        <swagger-maven-plugin.version>2.2.15</swagger-maven-plugin.version>
-        <springdoc-openapi-ui.version>1.7.0</springdoc-openapi-ui.version>
+        <swagger-maven-plugin.version>2.2.22</swagger-maven-plugin.version>
+        <springdoc-openapi-ui.version>1.8.0</springdoc-openapi-ui.version>
 
         <!-- Lombok -->
-        <lombok.version>1.18.28</lombok.version>
+        <lombok.version>1.18.34</lombok.version>
 
         <!-- MapStruct -->
-        <mapstruct.version>1.5.5.Final</mapstruct.version>
+        <mapstruct.version>1.6.0</mapstruct.version>
 
         <!-- Lombok & MapStruct binding -->
         <lombok-mapstruct-binding.version>0.2.0</lombok-mapstruct-binding.version>
 
         <!-- SQL -->
-        <postgresql.version>42.6.0</postgresql.version>
+        <postgresql.version>42.7.3</postgresql.version>
     </properties>
 
 </project>
