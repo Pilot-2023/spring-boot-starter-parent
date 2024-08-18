@@ -24,7 +24,9 @@
     <version>1.0.0-SNAPSHOT</version>
     <packaging>pom</packaging>
     <name>Pilot 2023 Build Of Materials</name>
-    <description>Parent BOM providing dependency and plugin management for Spring Boot microservices built by Pilot 2023</description>
+    <description>Parent BOM providing dependency and plugin management for Spring Boot microservices built by Pilot
+        2023
+    </description>
 
     <!-- ######################################################################### -->
     <!-- #### P R O J E C T _ D E P E N D E N C I E S ############################ -->
@@ -148,5 +150,17 @@
         <!-- SQL -->
         <postgresql.version>42.7.3</postgresql.version>
     </properties>
+
+    <!-- ######################################################################### -->
+    <!-- #### P R O J E C T _ D E P L O Y M E N T ################################ -->
+    <!-- ######################################################################### -->
+
+    <!-- Distribution Management section -->
+    <distributionManagement>
+        <repository>
+            <id>aws-artifact-repository</id>
+            <url>https://ricardo-petronilho-853022906243.d.codeartifact.eu-west-2.amazonaws.com/maven/artifact-repository/</url>
+        </repository>
+    </distributionManagement>
 
 </project>
